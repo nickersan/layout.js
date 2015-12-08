@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <title>Border</title>
+    
+    <style>
+    
+      body
+      {
+        height: 100%;
+        margin: 0;
+        width: 100%
+      }
+    
+      div#top
+      {
+        background-color: blue;
+      }
+      
+      div#left
+      {
+        background-color: yellow;
+      }
+
+      div#right
+      {
+        background-color: red;
+      }
+
+      div#bottom
+      {
+        background-color: orange;
+      }
+
+      div#center
+      {
+        background-color: green;
+      }
+
+    </style>
+
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+
+    <script type="text/javascript">
+
+      var bodyLayout = $layout("body")
+        .left(0)
+        .right(0)
+        .top(0)
+        .bottom(0)
+        .build();
+
+      var topLayout = $layout("#top")
+        .left(0)
+        .right(0)
+        .top(0)
+        .height(60)
+        .build();
+
+      var bottomLayout = $layout("#bottom")
+        .left(0)
+        .right(0)
+        .bottom(0)
+        .height(60)
+        .build();
+
+      var leftLayout = $layout("#left")
+        .width(50)
+        .left(0)
+        .top(0).relativeTo("#top", $layout.BOTTOM)
+        .bottom(0).relativeTo("#bottom", $layout.TOP)
+        .build();
+
+      var rightLayout = $layout("#right")
+        .width(50)
+        .right(0)
+        .top(0).relativeTo("#top", $layout.BOTTOM)
+        .bottom(0).relativeTo("#bottom", $layout.TOP)
+        .build();
+
+      var centerLayout = $layout("#center")
+        .left(10).relativeTo("#left", $layout.RIGHT)
+        .right(10).relativeTo("#right", $layout.LEFT)
+        .top(10).relativeTo("#top", $layout.BOTTOM)
+        .bottom(10).relativeTo("#bottom", $layout.TOP)
+        .build();
+
+      $(document).ready(
+        function()
+        {
+          bodyLayout();
+          topLayout();
+          bottomLayout();
+          leftLayout();
+          rightLayout();
+          centerLayout();
+        }
+      );
+
+    </script>
+    
+  </head>
+
+  <body>
+    <div id="top">Top</div>
+    <div id="left">Left</div>
+    <div id="right">Right</div>
+    <div id="bottom">Bottom</div>
+    <div id="center">Center</div>
+  </body>
+
+</html>

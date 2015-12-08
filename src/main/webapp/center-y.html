@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <title>Center - Y</title>
+
+    <style>
+
+      body
+      {
+        margin: 0;
+      }
+
+      div
+      {
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      div#one
+      {
+        background-color: blue;
+      }
+
+      div#two
+      {
+        background-color: yellow;
+      }
+
+      div#three
+      {
+        background-color: red;
+      }
+
+      div#four
+      {
+        background-color: orange;
+      }
+
+      div#five
+      {
+        background-color: green;
+      }
+
+    </style>
+
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+
+    <script type="text/javascript">
+
+      var bodyLayout = $layout("body")
+        .left(0)
+        .right(0)
+        .top(0)
+        .bottom(0)
+        .build();
+
+      var oneLayout = $layout("#one")
+        .width(30)
+        .height(100)
+        .left(10)
+        .centerY(0).relativeTo("body", $layout.CENTER)
+        .build();
+
+      var twoLayout = $layout("#two")
+        .width(30)
+        .height(200)
+        .left(10).relativeTo("#one", $layout.RIGHT)
+        .centerY(0).relativeTo("body", $layout.CENTER)
+        .build();
+
+      var threeLayout = $layout("#three")
+        .width(30)
+        .height(300)
+        .left(10).relativeTo("#two", $layout.RIGHT)
+        .centerY(0).relativeTo("body", $layout.CENTER)
+        .build();
+
+      var fourLayout = $layout("#four")
+        .width(30)
+        .height(400)
+        .left(10).relativeTo("#three", $layout.RIGHT)
+        .centerY(0).relativeTo("body", $layout.CENTER)
+        .build();
+
+      var fiveLayout = $layout("#five")
+        .width(30)
+        .height(500)
+        .left(10).relativeTo("#four", $layout.RIGHT)
+        .centerY(0).relativeTo("body", $layout.CENTER)
+        .build();
+
+      $(document).ready(
+        function()
+        {
+          bodyLayout();
+          oneLayout();
+          twoLayout();
+          threeLayout();
+          fourLayout();
+          fiveLayout();
+        }
+      );
+
+    </script>
+
+  </head>
+  <body>
+
+    <div id="one">1</div>
+    <div id="two">2</div>
+    <div id="three">3</div>
+    <div id="four">4</div>
+    <div id="five">5</div>
+
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <title>Dialog</title>
+
+    <style>
+
+      body
+      {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        margin: 0;
+      }
+
+      div#dialog
+      {
+        background-color: lightgrey;
+        border: 1px solid darkgrey;
+        box-shadow: 10px 10px 5px darkgrey;
+      }
+
+      label
+      {
+        padding: 3px;
+      }
+
+      p
+      {
+        margin: 0;
+        padding: 0;
+      }
+
+    </style>
+
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+
+    <script type="text/javascript">
+
+      var bodyLayout = $layout("body")
+        .left(0)
+        .right(0)
+        .top(0)
+        .bottom(0)
+        .build();
+
+      var dialogLayout = $layout("#dialog")
+        .width(400)
+        .height(300)
+        .centerX(0).relativeTo("body", $layout.CENTER)
+        .centerY(0).relativeTo("body", $layout.CENTER)
+        .build();
+
+      var instructionsLayout = $layout("#instructions")
+        .left(20)
+        .right(20)
+        .top(20)
+        .build();
+
+      var firstLabelLayout = $layout("#firstLabel")
+        .left(20)
+        .top(30).relativeTo("#instructions", $layout.BOTTOM)
+        .build();
+
+      var firstLayout = $layout("#first")
+        .left(100)
+        .height(20)
+        .centerY(0).relativeTo("#firstLabel", $layout.CENTER)
+        .build();
+
+      var secondLabelLayout = $layout("#secondLabel")
+        .left(20)
+        .top(20).relativeTo("#firstLabel", $layout.BOTTOM)
+        .build();
+
+      var secondLayout = $layout("#second")
+        .left(100)
+        .height(20)
+        .centerY(0).relativeTo("#secondLabel", $layout.CENTER)
+        .build();
+
+      var thirdLabelLayout = $layout("#thirdLabel")
+        .left(20)
+        .top(20).relativeTo("#secondLabel", $layout.BOTTOM)
+        .build();
+
+      var thirdLayout = $layout("#third")
+        .left(100)
+        .height(20)
+        .centerY(0).relativeTo("#thirdLabel", $layout.CENTER)
+        .build();
+
+
+      $(document).ready(
+        function()
+        {
+          bodyLayout();
+          dialogLayout();
+          instructionsLayout();
+          firstLabelLayout();
+          firstLayout();
+          secondLabelLayout();
+          secondLayout();
+          thirdLabelLayout();
+          thirdLayout();
+        }
+      );
+
+    </script>
+
+  </head>
+
+  <body>
+
+    <div id="dialog">
+
+      <p id="instructions">
+        This shows how easy it is to layout a form dialog with multiple controls that are all neatly aligned.
+      </p>
+
+      <label id="firstLabel" for="first">First:</label>
+      <input id="first" type="text"/>
+
+      <label id="secondLabel" for="second">Second:</label>
+      <input id="second" type="text"/>
+
+      <label id="thirdLabel" for="third">Third:</label>
+      <input id="third" type="text"/>
+
+    </div>
+
+  </body>
+
+</html>
